@@ -28601,16 +28601,20 @@ Input -  Freq bit (4, input to SSPA)	LSB
             e.Graphics.DrawString(e.RowIndex.ToString(), this.Font, SystemBrushes.ControlText, headerBounds, centerFormat);
         }
 
+        int counter = 0;
         void UpdateTestDataToGrid(DataGridView i_DataGrid)
         {
+            counter = 0;
             if (Int32.TryParse(GetLast(i_DataGrid.Name, 2), out int GridNumber))
             {
                 // String BlockAddress = String.Format("00 0{0}", GridNumber.ToString("X"));
                 int InternalAddress = 0;
                 for (int i = 0; i < i_DataGrid.Rows.Count; i++)
                 {
-                    i_DataGrid.Rows[i].Cells[0].Value = String.Format("{0}{1}", GridNumber.ToString("X"), InternalAddress.ToString("X3"));
-                    InternalAddress += 2;
+                    // i_DataGrid.Rows[i].Cells[0].Value = String.Format("{0}{1}", GridNumber.ToString("X"), InternalAddress.ToString("X3"));
+                    i_DataGrid.Rows[i].Cells[0].Value = counter;
+                     InternalAddress += 2;
+                    counter++;
                 }
             }
         }
